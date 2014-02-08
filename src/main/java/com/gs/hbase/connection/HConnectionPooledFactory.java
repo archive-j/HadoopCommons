@@ -11,7 +11,13 @@ public class HConnectionPooledFactory extends
 	
 	@Override
 	public boolean validateObject(PooledObject<HConnection> p) {
-		return !p.getObject().isClosed();
+		if(p.getObject().isClosed()){
+			System.out.println("CLOSE");
+			return false;
+		}else{
+			System.out.println("not close");
+			return true;
+		}
 	}
 
 	@Override
